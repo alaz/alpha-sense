@@ -14,6 +14,7 @@
     "hpp": "^0.2.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-loadable": "^5.5.0",
     "ts-loader": "^5.3.3",
     "typescript": "^3.4.1",
     "webpack": "^4.29.6"
@@ -25,6 +26,7 @@
     "@types/node": "^11.12.2",
     "@types/react": "^16.8.10",
     "@types/react-dom": "^16.8.3",
+    "@types/react-loadable": "^5.5.1",
     "webpack-cli": "^3.3.0",
     "webpack-merge": "^4.2.1",
     "webpack-node-externals": "^1.7.2"

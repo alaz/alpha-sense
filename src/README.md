@@ -20,3 +20,8 @@ yarn run server
 # In browser
 
 http://localhost:8080
+
+# TODO
+
+* Security: CSRF
+* HTTP conditional caching via `ETag`
