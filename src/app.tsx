@@ -15,37 +15,64 @@ export class App extends React.Component<{}, State> {
   }
 
   public render() {
-    const Channels = channels(this.state.selected);
+    const Messages = this.state.selected ? messages(this.state.selected) : PleaseSelect;
     return (
       <div className="container">
         <div className="row">
           <div className="col-4">
-            <Channels />
+            <Channels selected={this.state.selected} onSelect={this.select}/>
           </div>
           <div className="col-8">
-            <div className="lead">
-              Please select the channel
-            </div>
+            <Messages />
           </div>
         </div>
       </div>
     );
   }
 
+  private select = (channel: Channel) => {
+    this.setState({selected: channel});
+  };
 }
 
-function channels(_selected: Channel) {
+interface ChannelsProps {
+  selected: Channel;
+  onSelect: (channel: Channel) => void;
+}
+
+const Channels = Loadable<ChannelsProps, Channel[]>({
+  delay: 100,
+  loader: () => Channel.load(),
+  loading: Loading,
+
+  render(channels, {onSelect, selected}: ChannelsProps) {
+    return (
+      <div className="list-group">{channels.map((c) => {
+        const clz = selected && selected.id === c.id ? 'active' : '';
+        const classes = `list-group-item list-group-item-action ${clz}`
+        return <button type="button" key={c.id} className={classes} onClick={() => onSelect(c)}>{c.id}</button>;
+      })}</div>
+    );
+  }
+});
+
+function PleaseSelect() {
+  return (
+    <div className="jumbotron">
+      Please select the channel
+    </div>
+  );
+}
+
+function messages(channel: Channel) {
   return Loadable({
     delay: 100,
-    loader: () => Channel.load(),
+    loader: () => channel.retrieve(),
     loading: Loading,
 
-    render(channels, _props) {
-      return (
-        <div className="list-group">
-          {channels.map((c) => <li key={c.id} className="list-group-item">{c.id}</li>)}
-        </div>
-      );
+    render(messageList, _props) {
+      console.log(messageList);
+      return <div></div>;
     }
   });
 }

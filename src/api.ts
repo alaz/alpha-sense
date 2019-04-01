@@ -1,3 +1,5 @@
+type Message = string;
+
 export class Channel {
   public static load(): Promise<Channel[]> {
     return fetch('/channels',
@@ -5,15 +7,30 @@ export class Channel {
         credentials: 'same-origin',
         headers: { Accept: 'application/json' },
       })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`API error ${response.status} for request ${response.url}`);
-        }
-        return response;
-      })
-      .then((response) => response.json())
+      .then(responseCheck)
+      .then(asJson)
       .then((channels) => channels.map((id: string) => new Channel(id)));
   }
 
   constructor(public id: string) {}
+
+  public retrieve(): Promise<Message[]> {
+    return fetch(`/messages/${this.id}`, {
+        credentials: 'same-origin',
+        headers: { Accept: 'application/json' },
+      })
+      .then(responseCheck)
+      .then(asJson);
+  }
+}
+
+function responseCheck(response: Response) {
+  if (!response.ok) {
+    throw new Error(`API error ${response.status} for request ${response.url}`);
+  }
+  return response;
+}
+
+function asJson(response: Response) {
+  return response.json();
 }

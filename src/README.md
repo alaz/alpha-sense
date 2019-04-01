@@ -23,5 +23,10 @@ http://localhost:8080
 
 # TODO
 
+* Testing
 * Security: CSRF
-* HTTP conditional caching via `ETag`
+* Proper WAI ARIA
+* I18n
+* Schema.org markup
+* Common types between client / server
+* WebSockets
