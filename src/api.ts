@@ -22,6 +22,15 @@ export class Channel {
       .then(responseCheck)
       .then(asJson);
   }
+
+  public push(message: string) {
+    return fetch(`/${this.id}`, {
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json' },
+      method: 'PUT',
+      body: JSON.stringify({payload: message})
+    });
+  }
 }
 
 function responseCheck(response: Response) {

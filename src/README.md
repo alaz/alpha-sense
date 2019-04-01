@@ -1,3 +1,7 @@
+# Missing parts
+
+* Disable the button when input is empty.
+
 # Building
 
 Get the dependencies:
@@ -5,10 +9,6 @@ Get the dependencies:
 ```
 yarn
 ```
-
-# Development
-
-TODO: webpack-dev-middleware as Express router
 
 # Production
 
@@ -30,3 +30,5 @@ http://localhost:8080
 * Schema.org markup
 * Common types between client / server
 * WebSockets
+* Caching in a browser's local storage
+* webpack-dev-middleware as Express router to ease development cycles

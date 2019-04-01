@@ -71,8 +71,71 @@ function messages(channel: Channel) {
     loading: Loading,
 
     render(messageList, _props) {
-      console.log(messageList);
-      return <div></div>;
+      return (
+        <div>
+          <MessageList channel={channel} init={messageList} />
+        </div>
+      );
     }
   });
+}
+
+interface MessageListProps {
+  channel: Channel;
+  init: string[];
+}
+
+interface MessageListState {
+  messages: string[];
+}
+
+class MessageList extends React.Component<MessageListProps, MessageListState> {
+  // private input = React.createRef<HTMLInputElement>();
+
+  private input: HTMLInputElement;
+
+  private setInput = (element: HTMLInputElement) => {
+    this.input = element;
+  }
+
+  private send = () => {
+    const message = this.input.value.trim();
+    if (message.length > 0) {
+      // TODO: lock button
+      // TODO: spinner
+      this.props.channel.push(message).then(() => {
+        this.setState( ({messages}) => {
+          messages.push(message);
+          return { messages };
+        });
+      });
+    }
+  }
+
+  constructor(props: MessageListProps) {
+    super(props);
+    this.state = {
+      messages: props.init,
+    };
+  }
+
+  public render() {
+    // TODO: enable/disable button based on input contents (not empty)
+    return (
+      <>
+        <h2>Showing {this.props.channel.id}</h2>
+
+        <ul className="list-unstyled">{this.state.messages.map((m, i) =>
+          <li key={i}>{m}</li>
+        )}</ul>
+
+        <div className="input-group mb-3">
+          <input type="text" className="form-control" placeholder="Enter text here..." required ref={this.setInput} />
+          <div className="input-group-append">
+            <button className="btn btn-outline-secondary" type="button" onClick={this.send}>Send</button>
+          </div>
+        </div>
+      </>
+    );
+  }
 }
