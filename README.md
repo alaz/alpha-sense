@@ -2,7 +2,7 @@
 
 This is a complete client-sever React/Node project built per a home
 programming assignment. I do not want to disclose all the assignment's
-terms, but the time limit was 4 hours. The requirement to upload a
+terms, but the time limit was 4 hours. A requirement to upload my
 solution onto Github was explicit.
 
 The sole author of all the code is me, Alexander Azarov. The license is
@@ -10,14 +10,13 @@ GPL, mind it.
 
 ## Side notes
 
-There is a huge progress in the software engineering industry. The
-last time I had been assigned a home task to create this kind of an
-application was 1998, we called it a "message board" and a Web's
-common programming language was Perl at that time. I had got "till the
-morning" time limit, I was young and thought it's plenty of time, so
-I had decided to take a chance to try something new. And successfully
-delivered the solution written in a new technology called PHP to the
-hiring manager's surprise.
+I can see huge progress in the software engineering industry. The last
+time I was assigned a home task to create this kind of an application
+was 1998, we called it a "message board" and a Web's common programming
+language was Perl at that time. I got "till the morning" time limit, I
+was young and thought it's plenty of time, so I decided to take a chance
+to try something new. And successfully delivered the solution written in
+a new technology called PHP to the hiring manager's surprise.
 
 It's 2019, a home programming task is still the same, but we call it
 a "chat application" now. And of course the technology stack is a bit
@@ -32,11 +31,8 @@ in the next 20 years.
 
 A quick Github search reveals at least:
 
-* https://github.com/Salasar/alphasense
-* https://github.com/AleksiUu/Alphasense
 * https://github.com/dkarbayev/alphasense-board
 * https://github.com/sameoldmadness/alphasense-hw
-* https://github.com/pouyapourbaba/alphasense_home_assignment
 
 # Report
 
